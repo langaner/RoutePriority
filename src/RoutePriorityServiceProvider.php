@@ -18,8 +18,7 @@ class RoutePriorityServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app['router'] = $this->app->share(function($app)
-        {
+        $this->app->singleton('router', function ($app) {
             return new \Langaner\RoutePriority\Router($app['events'], $app);
         });
     }
