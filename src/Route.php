@@ -38,11 +38,14 @@ class Route extends IlluminateRoute
 		return $this->priority;
 	}
 
-	/**
-	 * @param int $priority
-	 */
-	public function setPriority($priority)
-	{
-		$this->priority = $priority;
-	}
+    /**
+     * @param $priority
+     * @return $this
+     */
+    public function setPriority($priority)
+    {
+        $this->priority = $priority;
+
+        return $this;
+    }
 }
