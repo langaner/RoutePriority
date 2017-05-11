@@ -16,12 +16,12 @@ class RoutePriorityServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function register()
-    {
-        $this->app->singleton('router', function ($app) {
-            return new \Langaner\RoutePriority\Router($app['events'], $app);
-        });
-    }
+	public function register()
+	{
+		$this->app->singleton('router', function ($app) {
+			return new \Langaner\RoutePriority\Router($app['events'], $app);
+		});
+	}
 
     /**
      * Get the services provided by the provider.
