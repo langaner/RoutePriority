@@ -24,9 +24,9 @@ class Route extends IlluminateRoute
         list($class) = explode('@', $this->action['uses']);
 
         $this->controller = $this->container->make($class);
-        
+
         return (new ControllerDispatcher($this->container))->dispatch(
-            $this, $this->controller, $this->getControllerMethod()
+            $this, $this->getController(), $this->getControllerMethod()
         );
     }
 	

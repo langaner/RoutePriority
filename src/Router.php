@@ -35,11 +35,13 @@ class Router extends IlluminateRouter
 	 */
 	protected function newRoute($methods, $uri, $action)
 	{
-		$route = (new Route($methods, $uri, $action))->setContainer($this->container);
-		$priority = self::DEFAULT_PRIORITY - $this->routes->count();
-		$route->setPriority($priority);
+        $priority = self::DEFAULT_PRIORITY;
+        $route = (new Route($methods, $uri, $action))
+            ->setRouter($this)
+            ->setContainer($this->container)
+            ->setPriority($priority);
 
-		return $route;
+        return $route;
 	}
 
 	/**
