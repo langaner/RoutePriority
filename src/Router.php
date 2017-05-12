@@ -35,9 +35,11 @@ class Router extends IlluminateRouter
 	 */
 	protected function newRoute($methods, $uri, $action)
 	{
-		$route = (new Route($methods, $uri, $action))->setContainer($this->container);
-		$priority = self::DEFAULT_PRIORITY - $this->routes->count();
-		$route->setPriority($priority);
+        $priority = self::DEFAULT_PRIORITY - ($this->routes->count() / 10000000);
+		$route = (new Route($methods, $uri, $action))
+			->setRouter($this)
+			->setContainer($this->container)
+			->setPriority($priority);
 
 		return $route;
 	}
@@ -56,7 +58,7 @@ class Router extends IlluminateRouter
 		if (!empty($this->groupStack)) {
 			$route = $this->mergePriority($route);
 		}
-
+		
 		return $route;
     }
 
@@ -79,7 +81,7 @@ class Router extends IlluminateRouter
     public function dispatch(Request $request)
     {
         $this->getRoutes();
-
+        
 		return parent::dispatch($request);
     }
 

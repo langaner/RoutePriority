@@ -7,11 +7,15 @@
         {
             "name": "Langaner",
             "email": "krashgt@gmail.com"
+        },
+        {
+            "name": "Zarianec",
+            "email": "zarianec91@gmail.com"
         }
     ],
     "require": {
-        "php": ">=5.5.9",
-        "illuminate/support": "5.1.*|5.2.*"
+        "php": ">=5.6.4",
+        "illuminate/support": "5.4.*"
     },
     "autoload": {
         "psr-4": {

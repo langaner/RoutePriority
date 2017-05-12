@@ -19,7 +19,7 @@ trait RouterTrait
 		
 		if(!empty($this->routeMiddleware)) {
 			foreach ($this->routeMiddleware as $key => $middleware) {
-				$this->router->middleware($key, $middleware);
+				$this->router->aliasMiddleware($key, $middleware);
 			}
 		}
 
