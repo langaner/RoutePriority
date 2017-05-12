@@ -35,7 +35,7 @@ class Router extends IlluminateRouter
 	 */
 	protected function newRoute($methods, $uri, $action)
 	{
-		$priority = self::DEFAULT_PRIORITY;
+        $priority = self::DEFAULT_PRIORITY - ($this->routes->count() / 10000000);
 		$route = (new Route($methods, $uri, $action))
 			->setRouter($this)
 			->setContainer($this->container)
