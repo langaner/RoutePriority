@@ -56,7 +56,7 @@ class Router extends IlluminateRouter
 		if (!empty($this->groupStack)) {
 			$route = $this->mergePriority($route);
 		}
-
+		
 		return $route;
     }
 
@@ -79,7 +79,7 @@ class Router extends IlluminateRouter
     public function dispatch(Request $request)
     {
         $this->getRoutes();
-
+        
 		return parent::dispatch($request);
     }
 

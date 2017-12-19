@@ -14,18 +14,20 @@ class Route extends IlluminateRoute
 	/**
      * Run the route action and return the response.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return mixed
      *
      * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
      */
-    protected function runController(Request $request)
+    protected function runController()
     {
     	$this->router = app('router');
-        list($class, $method) = explode('@', $this->action['uses']);
+        list($class) = explode('@', $this->action['uses']);
+
+        $this->controller = $this->container->make($class);
         
-        return (new ControllerDispatcher($this->router, $this->container))
-                    ->dispatch($this, $request, $class, $method);
+        return (new ControllerDispatcher($this->container))->dispatch(
+            $this, $this->controller, $this->getControllerMethod()
+        );
     }
 	
 	/**
