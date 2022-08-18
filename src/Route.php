@@ -43,4 +43,12 @@ class Route extends IlluminateRoute
 	{
 		$this->priority = $priority;
 	}
+	
+	/**
+	 * @return int
+	 */
+	public function getUri()
+	{
+		return $this->uri;
+	}
 }
